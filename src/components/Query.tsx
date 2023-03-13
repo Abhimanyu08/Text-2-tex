@@ -7,8 +7,6 @@ import {
 	BsFillArrowDownCircleFill,
 } from 'react-icons/bs';
 
-const latex = '$e^{i\\pi} + 1 = 0$';
-
 function Query() {
 	const [query, setQuery] = useState('');
 	const [rawLatex, setRawLatex] = useState('');
