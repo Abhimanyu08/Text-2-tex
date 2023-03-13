@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Latex from 'react-latex';
+import { useState } from "react";
+import Latex from "react-latex";
 import {
 	BsFillArrowRightCircleFill,
 	BsFillArrowDownCircleFill,
-} from 'react-icons/bs';
+} from "react-icons/bs";
 
 function Query() {
-	const [query, setQuery] = useState('');
-	const [rawLatex, setRawLatex] = useState('');
+	const [query, setQuery] = useState("");
+	const [rawLatex, setRawLatex] = useState("");
 	const [gettingLatex, setGettingLatex] = useState(false);
 
 	const sendReq = async (query: string) => {
 		if (!query) {
-			setRawLatex('what are you doing');
+			setRawLatex("what are you doing");
 			return;
 		}
 		setGettingLatex(true);
@@ -25,6 +25,7 @@ function Query() {
 		const { latex } = await resp.json();
 		setRawLatex(latex);
 		setGettingLatex(false);
+		setQuery("");
 	};
 
 	return (
@@ -56,7 +57,7 @@ function Query() {
 				justify-self-center
 				
 transition
-                ${query ? 'text-white scale-110 ' : 'text-gray-600 '}
+                ${query ? "text-white scale-110 " : "text-gray-600 "}
 				active:scale-90
 				mx-auto
             `}
@@ -65,20 +66,20 @@ transition
 				<BsFillArrowRightCircleFill
 					className={`hidden lg:block mx-auto
 				
-                ${gettingLatex ? 'animate-bounce' : 'animate-none'}
+                ${gettingLatex ? "animate-bounce" : "animate-none"}
 				`}
 				/>
 				<BsFillArrowDownCircleFill
 					className={`block lg:hidden
 				
-                ${gettingLatex ? 'animate-bounce' : 'animate-none'}
+                ${gettingLatex ? "animate-bounce" : "animate-none"}
 				`}
 				/>
 			</button>
 			<textarea
 				name=""
 				id=""
-				value={rawLatex.split('\n').join(' ')}
+				value={rawLatex.split("\n").join(" ")}
 				className="text-white bg-black basis-3/12 
 
 				lg:h-52
@@ -95,13 +96,13 @@ transition
 			"
 			>
 				<BsFillArrowRightCircleFill className="hidden lg:block mx-auto" />
-				<BsFillArrowDownCircleFill x-auto className="block lg:hidden" />
+				<BsFillArrowDownCircleFill className="block lg:hidden" />
 			</button>
 			<div className="lg:basis-3/12 text-center my-auto font-mono">
 				{rawLatex ? (
-					<Latex>{rawLatex.split('\n').join(' ')}</Latex>
+					<Latex>{rawLatex.split("\n").join(" ")}</Latex>
 				) : (
-					'Rendered LaTeX will be shown here'
+					"Rendered LaTeX will be shown here"
 				)}
 			</div>
 		</div>
